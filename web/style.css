@@ -1,0 +1,7 @@
+body{font-family:system-ui, sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem}
+textarea{width:100%;min-height:65vh;font-size:1.1rem;line-height:1.5}
+#toast{position:fixed;bottom:1rem;right:1rem;background:#333;color:#fff;padding:.6rem 1rem;border-radius:6px;opacity:0;transition:opacity .3s}
+#settings{border:1px solid #ccc;border-radius:6px;padding:1rem;margin-bottom:1rem}
+#settings input{width:4rem}
+kbd{background:#eee;border-radius:3px;padding:2px 4px;font-size:.8rem}
+button{margin-top:.5rem}

@@ -1,15 +1,15 @@
-from pydantic import BaseModel, Field, PositiveInt, validator
+# app/config.py
+from pydantic import BaseModel
 
-DEFAULT_HOTKEY = "Tab"
+class ModelSpec(BaseModel):
+    id: str
+    order: int
+    char: bool
+    hotkey: str
+    # remove the smooth field entirely or default to "kneser"
 
-class Settings(BaseModel):
-    context_window: PositiveInt = Field(20,  ge=1,  le=200)
-    top_k:          PositiveInt = Field(5,   ge=1,  le=20)
-    ngram_order:    PositiveInt = Field(5,   ge=2,  le=7)
-    hotkey:         str         = Field(DEFAULT_HOTKEY)
-
-    @validator("hotkey")
-    def printable(cls, v):
-        if not v.strip():
-            raise ValueError("Hotkey cannot be blank")
-        return v
+MODELS = [
+    ModelSpec(id="w5", order=5, char=False, hotkey="Tab"),
+    ModelSpec(id="w3", order=3, char=False, hotkey="Ctrl+1"),   # ← no smooth
+    ModelSpec(id="c6", order=6, char=True,  hotkey="Ctrl+2"),
+]

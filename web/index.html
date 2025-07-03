@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Predictive Transcriber</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Predictive Transcriber</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+  <h2>Predictive Transcriber</h2>
 
-<h2>Predictive Transcriber</h2>
+  <!-- editor wrapper: holds both overlay and real textarea -->
+  <div id="editor-wrapper">
+    <pre id="overlay" aria-hidden="true"></pre>
+    <textarea id="editor" spellcheck="false" placeholder="Start typing…"></textarea>
+  </div>
 
-<div id="settings">
-  <h4>Settings</h4>
-  Context window (tokens) <input id="ctx" type="number" min="1" max="200">
-  Top-k <input id="topk" type="number" min="1" max="20">
-  N-gram order <input id="order" type="number" min="2" max="7">
-  Hotkey to accept <input id="hk" type="text" size="6">
-  <button id="saveSettings">Save settings</button>
-</div>
+  <!-- repeated-chunk panel -->
+  <div id="chunkPanel" hidden>
+    <h4>Repeated chunks (⌘/Ctrl + R, Esc to close)</h4>
+    <ul id="chunkList"></ul>
+  </div>
 
-<textarea id="editor" spellcheck="false"></textarea>
-<div class="suggestions" id="s"></div>
-<button id="saveFile">Save file ↵</button>
+  <!-- suggestions and save button -->
+  <div id="sug">(predictions appear here)</div>
+  <button id="save">Save ↵</button>
 
-<div id="toast"></div>
-<script src="app.js"></script>
+  <!-- your prediction + chunk-picker logic -->
+  <script src="/static/app.js"></script>
 </body>
 </html>
